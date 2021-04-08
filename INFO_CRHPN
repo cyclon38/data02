@@ -1,0 +1,52 @@
+#
+#CPU Usage Rate
+#
+CPU_PERCENT=`top -b -n 1 | grep -i cpu\(s\)| awk -F, '{print $4}' | tr -d "%id," | awk '{print 100-$1}'`
+
+#
+#MEMORY Usage Rate
+#
+MEMORY_TOTAL=`free | grep ^Mem | awk '{print $2}'`
+MEMORY_NOMINAL_USED=`free | grep ^Mem | awk '{print $4}'`
+MEMORY_ACTUAL_USED=`free | grep ^Mem | awk '{print $7}'`
+MEMORY_NOMINAL_PERCENT=$((100*(MEMORY_TOTAL-MEMORY_NOMINAL_USED)/MEMORY_TOTAL))
+MEMORY_ACTUAL_PERCENT=$((100* (MEMORY_TOTAL-MEMORY_ACTUAL_USED)/MEMORY_TOTAL))
+
+#DISK 사용율
+#DISK_TOTAL=`df -P | grep -v ^Filesystem | awk '{sum += $2} END { print sum; }'`
+#DISK_USED=`df -P | grep -v ^Filesystem | awk '{sum += $3} END { print sum; }'`
+#DISK_PERCENT=$((100*$DISK_USED/$DISK_TOTAL))
+#echo 총 DISK 용량: $(($DISK_TOTAL/1024/1024)) GB
+#echo DISK 사용 용량: $(($DISK_USED/1024/1024)) GB
+#echo DISK 사용량: $DISK_PERCENT %
+
+#
+# 1. CPU Check
+#
+echo
+echo CPU 사용량: $CPU_PERCENT %
+echo
+#
+# 2. RAM Check
+#
+echo 메모리 총량: $(($MEMORY_TOTAL/1024/1024)) GB
+echo 명목메모리 사용량: $MEMORY_NOMINAL_PERCENT %
+echo 실질 메모리 사용량: $MEMORY_ACTUAL_PERCENT %
+echo
+#
+#3. HDD Check
+#
+df -h | grep -v tmpfs
+echo
+#
+#4. Process Check
+#-dbus service check to exclude
+#-polkitd service check to exclude
+#
+ps -eo user,pid,ppid,pcpu,time,pmem,size,vsize,cmd | grep -v "\[" | grep -v "root" | grep -v "dbus" | grep -v "bash" | grep -v "polkitd"
+echo
+#
+#5. Port Check
+#
+netstat -antu | grep tcp | grep EST| awk '{print NR " State: ",$6," Local:",$4,"--->>> Foreign Address: ",$5 }'
+echo
