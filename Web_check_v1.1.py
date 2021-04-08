@@ -2,12 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 
 #1. request
-resp1 = requests.get('https://cran.r-project.org/web/packages/') #html1 = resp1.text
-resp2 = requests.get('http://cran.seoul.go.kr/web/packages') #html2 = resp2.text
-#resp3 = requests.get('https://cran.r-project.org/mirrors.html') #html3 = resp3.text
-resp4 = requests.get('https://cran.r-project.org/mirmon_report_release.html') #html4 = resp4.text
-resp5 = requests.get('https://cran.r-project.org/mirmon_report_old_release.html') #html5 = resp5.text
-
 resp3 = requests.get('http://www.g2b.go.kr:8101/ep/tbid/tbidList.do?searchType=1&bidSearchType=1&taskClCds=&bidNm=%BA%F2%B5%A5%C0%CC%C5%CD+%C4%B7%C6%DB%BD%BA&searchDtType=1&fromBidDt=2020%2F11%2F02&toBidDt=2021%2F03%2F31&fromOpenBidDt=&toOpenBidDt=&radOrgan=1&instNm=%BC%AD%BF%EF%C6%AF%BA%B0%BD%C3&instSearchRangeType=&refNo=&area=&areaNm=&industry=&industryCd=&budget=&budgetCompare=UP&detailPrdnmNo=&detailPrdnm=&procmntReqNo=&intbidYn=&regYn=Y&recordCountPerPage=10') #html3 = resp3.text
 
 
