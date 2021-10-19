@@ -1,0 +1,100 @@
+#!/bin/bash
+
+## echo print
+#echo hello world!
+
+## variables
+#NAME="Brad"
+#echo "My name is ${NAME}"
+
+## USER INPUT
+#read -p "Enter your name: " NAME
+#echo "Hello $NAME, nice to meet you"
+
+## simple IF
+
+#NAME="Bradq"
+#read -p "Enter your name: " NAME
+#if [ "$NAME" == "Brad" ]
+#then
+#	echo "Your name is Brad"
+#elif [ "$NAME" == "Jack" ]
+#then 
+#	echo "Your name is Jack"
+#else
+#	echo "Your name is NOT Brad or Jack"
+#fi 
+
+## file condition
+
+#FILE="test.txt"
+#if [ -f "$FILE" ]
+#then
+#	echo "$FILE is a file"
+#else
+#	echo "$FILE is NOT a file"
+#fi
+
+########
+# -f True if the provided string is s file
+# -e All checkng file name , file name & folder name
+
+## CASE STATEMENT
+
+#read -p "Are you 21 or over ? Y/N " ANSWER
+#
+#case "$ANSWER" in
+# [yY] | [yY][eE][sS])
+# 	echo "You can have a beer :)"
+#	;;
+# [nN] | [nN][oO])
+#	echo "Sorry, no drinking"
+#	;;
+# *)
+#	echo "Please enter y/yes or n/no"
+#	;;
+#esac
+
+## SIMPLE FOR LOOP
+#touch ./1.txt
+#touch ./2.txt
+#touch ./3.txt
+#
+#FILES=$(ls *.txt)
+#NEW="new"
+#for FILE in $FILES
+# do
+#  echo "Renaming $FILE to new-$FILE"
+#  mv $FILE $NEW-$FILE
+#done
+
+## WHILE LOOP 
+#cat ./test_211018 > read.txt
+#LINE=1
+#while read -r CURRENT_LINE
+# do
+#  echo "$LINE: $CURRENT_LINE"
+#  ((LINE++))
+# done < "./read.txt" 
+
+## FUNCTION
+#function sayHello(){
+# echo "Hellow World"
+#}
+
+#sayHello
+
+## FUNCTION WITH PARAMS
+#function greet(){
+# echo "Hello, Iam $1 and I am $2"
+#}
+#
+#greet "Brad" "36"
+
+## CRATE FOLDER AND WRITE TO A FILE
+#create1="hello/world.txt"
+#mkdir hello
+#touch $create1
+#echo "Hello World" >> $create1 
+#echo "Create $create1"
+#cat $create1
