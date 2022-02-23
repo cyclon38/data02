@@ -1,9 +1,16 @@
 @echo off						&: 배치 파일 시작하기
-title Task_kill_v1						&: 창 타이틀 넣기
+title Task_kill_v.1						&: 창 타이틀 넣기
 setlocal
 
-echo. 
-echo "== Task_kill_v1 LIST =="
+@chcp 65001 1> NUL 2> NUL
+
+echo.
+
+@ECHO -----------------------------------------------------------------------------
+@ECHO Task_kill_v.1 LIST
+@ECHO -----------------------------------------------------------------------------
+
+ECHO.
 
 tasklist /FI "IMAGENAME eq Calculator*"
 tasklist /FI "IMAGENAME eq YourPhone*"
